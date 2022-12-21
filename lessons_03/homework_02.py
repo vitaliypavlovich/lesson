@@ -4,5 +4,5 @@
 '''
 
 list = ['a', 'b', 'c', 'd']
-
-print(list[::-1])
+list_str = ''.join(list)
+print(list_str[::-1])
