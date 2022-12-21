@@ -5,11 +5,11 @@
 каждого года ему начисляется бонус в размере 120 рублей.
 '''
 deposit = 2130
-percent = 10
+percent = 10 / 100
 bonus = 120
 time = 5
 while time != 0:
     time -= 1
-    percent_of_deposit = deposit / percent
+    percent_of_deposit = deposit * percent
     deposit = percent_of_deposit + deposit + bonus
 print(deposit)
