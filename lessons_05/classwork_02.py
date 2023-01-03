@@ -13,4 +13,5 @@ def sum_and_max(*args):
                 my_max = element
     return my_sum, my_max
 result = sum_and_max(1, 3, 5, -1, 10)
+
 print(result)

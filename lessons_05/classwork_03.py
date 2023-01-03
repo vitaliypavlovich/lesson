@@ -9,4 +9,5 @@ def my_func(*args, func_type):
     return max(args)
 
 
+
 print(my_func(1, 2, 3, 4, 5, func_type ='min'))
