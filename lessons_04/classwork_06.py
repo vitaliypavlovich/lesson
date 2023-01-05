@@ -8,7 +8,7 @@ my_list = []
 x = 0
 for i in range(n, m + 1):
     counter = 0
-    for j in range(n, m + 1):
+    for j in range(n, i + 1):
         if i % j == 0:
             counter += 1    # подсчет количества делителей
     if counter == 2:
