@@ -10,6 +10,5 @@ bonus = 120
 time = 5
 while time != 0:
     time -= 1
-    percent_of_deposit = deposit * percent
-    deposit = percent_of_deposit + deposit + bonus
+    deposit += deposit * percent + bonus
 print(deposit)
