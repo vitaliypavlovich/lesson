@@ -8,5 +8,5 @@ from random import choice
 def random_card(*card_rating, card_suit):
     random_rating = choice(card_rating)   #рандомный номинал
     random_suit = choice(card_suit)       #рандомная масть
-    print(random_rating, random_suit)
-random_card(*['6', '7', '8', '9', '10', 'J', 'D', 'K', 'A'], card_suit = ['Hearts', 'Diamonds', 'Clubs', 'Spades'])
+    return random_rating, random_suit
+print(random_card(*['6', '7', '8', '9', '10', 'J', 'D', 'K', 'A'], card_suit = ['Hearts', 'Diamonds', 'Clubs', 'Spades']))

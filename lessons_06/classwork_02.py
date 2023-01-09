@@ -20,4 +20,4 @@ def rus_to_eng(word):
             return eng
 
 print(eng_to_rus('apple'))
-print(rus_to_eng('Машина'))
+print(rus_to_eng('машина'))
