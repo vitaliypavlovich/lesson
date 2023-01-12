@@ -7,6 +7,4 @@
 from lesson_08.library.car import Car
 if __name__ == '__main__':
     car = Car('Mercedes', 'E500', '2000', 0)
-while car.speed != 100:   #"разгон" машины до 100 км/ч
-    car.speed_increase()
-    car.link_speed()
+car.car_to_100()

@@ -24,3 +24,7 @@ class Car:
         print(f'{self.speed} км/ч')
     def reverse(self):
         self.speed = -5
+    def car_to_100(self):
+        while self.speed != 100:  # "разгон" машины до 100 км/ч
+            self.speed_increase()
+            self.link_speed()
