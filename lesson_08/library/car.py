@@ -4,7 +4,7 @@
 Методы: увеличить скорости (скорость +5), уменьшение скорости (скорость -5), стоп (сброс скорости на 0),
 отображение скорости, задний ход (изменение знака скорости).
 '''
-
+import time
 class Car:
     brand = None
     model = None
@@ -26,5 +26,6 @@ class Car:
         self.speed = -5
     def car_to_100(self):
         while self.speed != 100:  # "разгон" машины до 100 км/ч
+            time.sleep(1)
             self.speed_increase()
             self.link_speed()
