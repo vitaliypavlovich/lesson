@@ -43,7 +43,7 @@ def product_update(product_id: int):
         cursor.execute(
             '''
             UPDATE user
-            SET product = 'машина'
+            SET product = 'телефон'
             WHERE id = ?;
             ''',
             (product_id)
