@@ -19,20 +19,20 @@ def create_product(product: str, price: int, amount: int, comment: str):
            INSERT INTO user (product, price, amount, comment)
            VALUES (?, ?, ?, ?);
            """,
-           (product, price, amount, comment)
+           (product, price, amount, comment,)
        )
        session.commit()
 
-def product_read(product_id):
+def product_read(product):
     with sqlite3.connect('homework_database.sqlite3') as session:
         cursor = session.cursor()
         cursor.execute(
             '''
             SELECT *
             FROM user
-            WHERE id = ?;
+            WHERE product = ?;
             ''',
-            (product_id)
+            (product,)
         )
         session.commit()
         return cursor.fetchall()
@@ -46,7 +46,7 @@ def product_update(product_id: int):
             SET product = 'телефон'
             WHERE id = ?;
             ''',
-            (product_id)
+            (product_id,)
         )
         session.commit()
 
@@ -58,7 +58,7 @@ def product_delete(product_id: int):
             DELETE FROM user
             WHERE id = ?;
             ''',
-            (product_id)
+            (product_id,)
         )
         session.commit()
 if __name__ == '__main__':
