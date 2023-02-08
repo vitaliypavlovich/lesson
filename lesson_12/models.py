@@ -46,12 +46,15 @@ class Address(Base):
 class Purchase(Base):
     __tablename__ = "purchase"
     id = Column(Integer, primary_key=True)
-    user_id = Column(ForeignKey("user.id"), primary_key=True)
-    product_id = Column(ForeignKey("product.id"), primary_key=True)
+    user_id = Column(ForeignKey("user.id"))
+    product_id = Column(ForeignKey("product.id"))
     count = Column(Integer)
 
     user = relationship("User", back_populates="purchases", uselist=False)
     product = relationship("Product", back_populates="purchases", uselist=False)
+
+    def __str__(self):
+        return f'Purchases #{self.user_id, self.product_id, self.count}'
 
 
 class Product(Base):
