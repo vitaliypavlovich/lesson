@@ -1,18 +1,18 @@
 from lesson_12.models import User, Address, Profile, Product, Purchase
 
 
-def create_user(session, email, password, city, address, phone, age):
+def create_user(session, email, password):
     user = User(email=email, password=password)
     session.add(user)
     session.commit()
 
-    location = Address(user_id=user.id, city=city, address=address)
-    session.add(location)
-
-    profile = Profile(user_id=user.id, phone=phone, age=age)
-    session.add(profile)
-
-    session.commit()
+    # location = Address(user_id=user.id, city=city, address=address)
+    # session.add(location)
+    #
+    # profile = Profile(user_id=user.id, phone=phone, age=age)
+    # session.add(profile)
+    #
+    # session.commit()
     return user
 
 def add_address(session, user_id, city, address):
@@ -73,3 +73,7 @@ def find_purchase(session, email):
         user_id = session.query(User.id).filter(User.email == email)
         result = session.query(Purchase).filter(Purchase.user_id == user_id).first()
         return result
+
+def get_users(session):
+    users = session.query(User).all()
+    return [u.as_dict() for u in users]

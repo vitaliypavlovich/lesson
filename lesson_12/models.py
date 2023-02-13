@@ -18,6 +18,12 @@ class User(Base):
     def __str__(self):
         return f'User #{self.id}'
 
+    def as_dict(self):
+        return {
+            'id': self.id,
+            'email': self.email
+        }
+
 class Profile(Base):
     __tablename__ = "profile"
     id = Column(Integer, primary_key=True)
