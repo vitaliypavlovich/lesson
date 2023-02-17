@@ -6,33 +6,40 @@ def create_user(session, email, password):
     session.add(user)
     session.commit()
 
-    # location = Address(user_id=user.id, city=city, address=address)
-    # session.add(location)
-    #
-    # profile = Profile(user_id=user.id, phone=phone, age=age)
-    # session.add(profile)
-    #
-    # session.commit()
     return user
 
-def add_address(session, user_id, city, address):
+def create_profile(session, email, city, address, phone, age):
+    user_id = session.query(User.id).filter(User.email == email)
+    location = Address(user_id=user_id, city=city, address=address)
+    session.add(location)
+
+    profile = Profile(user_id=user_id, phone=phone, age=age)
+    session.add(profile)
+
+    session.commit()
+    return profile
+
+def add_address(session, email, city, address):
+    user_id = session.query(User.id).filter(User.email == email)
     location = Address(user_id=user_id, city=city, address=address)
     session.add(location)
     session.commit()
     return location
 
-def update_address(session, user_id, city, address):
-    location = session.query(Address).filter(Address.user_id == user_id).first()
+def update_address(session, email, old_city, old_address, new_city, new_address):
+    user_id = session.query(User.id).filter(User.email == email)
+    location = session.query(Address).filter(Address.user_id == user_id and Address.address == old_address
+                                             and Address.city == old_city).first()
 
-    location.address = address
-    location.city = city
+    location.address = new_address
+    location.city = new_city
 
     session.add(location)
     session.commit()
     return location
 
 def find_user(session, age):
-    result = session.query(Profile).filter(Profile.age == age).first()
+    result = session.query(Profile.user_id).filter(Profile.age == age).all()
     return result
 
 def create_product(session, name, price, count, comment):
